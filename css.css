@@ -1,0 +1,62 @@
+*{
+  box-sizing:border-box;
+}
+.container
+{
+  display:flexbox;
+  flex-direction:column;
+  background-color:gainsboro;
+}
+
+.first{
+  justify-content:left;
+}
+.second{
+  align-items:flex-start;
+  justify-content:left ;
+  padding:10px;
+}
+.third{
+  align-items:flex-start;
+  justify-content:left ;
+  padding:10px;
+}
+.fourth{
+  align-items:flex-start;
+  justify-content:left ;
+  padding:10px;
+}
+#top{
+  position: absolute;
+  top:0px;
+  left:150px;
+  font-family: impact;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow:2px 2px 0 #000;
+}
+#bot{
+  position: absolute;
+  bottom:0px;
+  left:150px;
+  font-family: impact;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow:2px 2px 0 #000;
+}
+.meme {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.delete{
+  opacity: 0;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+}
