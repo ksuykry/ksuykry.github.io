@@ -1,47 +1,116 @@
-from flask import Flask, request, render_template, redirect,session
-from forex_python.converter import CurrencyRates, CurrencyCodes,RatesNotAvailableError
-from decimal import Decimal
+from flask import Flask, redirect, render_template
+from flask_debugtoolbar import DebugToolbarExtension
+
+from models import db, connect_db, Playlist, Song, PlaylistSong
+from forms import NewSongForPlaylistForm, SongForm, PlaylistForm
+
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "my-precious"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///playlist_app'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ECHO'] = True
+
+connect_db(app)
+db.create_all()
+
+app.config['SECRET_KEY'] = "I'LL NEVER TELL!!"
+
+# Having the Debug Toolbar show redirects explicitly is often useful;
+# however, if you want to turn it off, you can uncomment this line:
+#
+# app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+
+debug = DebugToolbarExtension(app)
 
 
-errors = []
-@app.route('/currency')
-def currency_home():
-    return render_template("currency.html", errors = errors)
- 
+@app.route("/")
+def root():
+    """Homepage: redirect to /playlists."""
 
-@app.route('/changed', methods=["POST"])
-def currency_exchange():
-    #first grab the user input values with request.form
-    convert_f = request.form["convertingf"].upper()
-    convert_t = request.form["convertingt"].upper()
-    request_amount = request.form["amount"].upper()
-    c = CurrencyRates()
-    errors.clear()
-    #clear error array so that we start the page fresh
-    CurrCode = CurrencyCodes()
-    try:
-        float(request_amount)
-    except ValueError:
-        errors.append("Not a valid amount")
-        request_amount= 0.0
-    #checks to see if the amount is a float type, otherwise adds error and sets value to 0
-    try:
-        convert = c.get_rates(convert_f)
-    except RatesNotAvailableError:
-            errors.append(f"Not a valid code: {convert_f}")
-    try:
-        convert2 = c.get_rates(convert_t)
-    except RatesNotAvailableError:
-            errors.append(f"Not a valid code: {convert_t}")
-    #these two trys check to see if any rates come up with the user input.  If none come up, it appends the error to the error array.
-    print(errors)
-    if errors:
-        return redirect('/currency')
-    #redirects us to the main page if any error was present and prints them in a list at the top
-    exchange = round(c.convert(convert_f,convert_t, Decimal(request_amount)),2)
-    symbol = CurrCode.get_symbol(convert_t)
-    return render_template("currency.html", exchange = exchange, error_msg = errors, symbol = symbol, converted_f=convert_f,converted_t=convert_t,amount=request_amount)
-    
+    return redirect("/playlists")
 
+
+##############################################################################
+# Playlist routes
+
+
+@app.route("/playlists")
+def show_all_playlists():
+    """Return a list of playlists."""
+
+    playlists = Playlist.query.all()
+    return render_template("playlists.html", playlists=playlists)
+
+
+@app.route("/playlists/<int:playlist_id>")
+def show_playlist(playlist_id):
+    """Show detail on specific playlist."""
+
+    # ADD THE NECESSARY CODE HERE FOR THIS ROUTE TO WORK
+
+
+@app.route("/playlists/add", methods=["GET", "POST"])
+def add_playlist():
+    """Handle add-playlist form:
+
+    - if form not filled out or invalid: show form
+    - if valid: add playlist to SQLA and redirect to list-of-playlists
+    """
+
+    # ADD THE NECESSARY CODE HERE FOR THIS ROUTE TO WORK
+
+
+##############################################################################
+# Song routes
+
+
+@app.route("/songs")
+def show_all_songs():
+    """Show list of songs."""
+
+    songs = Song.query.all()
+    return render_template("songs.html", songs=songs)
+
+
+@app.route("/songs/<int:song_id>")
+def show_song(song_id):
+    """return a specific song"""
+
+    # ADD THE NECESSARY CODE HERE FOR THIS ROUTE TO WORK
+
+
+@app.route("/songs/add", methods=["GET", "POST"])
+def add_song():
+    """Handle add-song form:
+
+    - if form not filled out or invalid: show form
+    - if valid: add playlist to SQLA and redirect to list-of-songs
+    """
+
+    # ADD THE NECESSARY CODE HERE FOR THIS ROUTE TO WORK
+
+
+@app.route("/playlists/<int:playlist_id>/add-song", methods=["GET", "POST"])
+def add_song_to_playlist(playlist_id):
+    """Add a playlist and redirect to list."""
+
+    # BONUS - ADD THE NECESSARY CODE HERE FOR THIS ROUTE TO WORK
+
+    # THE SOLUTION TO THIS IS IN A HINT IN THE ASSESSMENT INSTRUCTIONS
+
+    playlist = ____
+    song = ____
+    form = NewSongForPlaylistForm()
+
+    # Restrict form to songs not already on this playlist
+
+    curr_on_playlist = ...
+    form.song.choices = ...
+
+    if form.validate_on_submit():
+        # ADD THE NECESSARY CODE HERE FOR THIS ROUTE TO WORK
+
+        return redirect(f"/playlists/{playlist_id}")
+
+    return render_template("add_song_to_playlist.html",
+                           playlist=playlist,
+                           form=form)
