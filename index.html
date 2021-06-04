@@ -1,37 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+<!DOCTYPE HTML>
 
-  <link href="css.css" rel="stylesheet">
-</head>
+<html>
+	<head>
+		<title>Kenny Suykry's Personal Site</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.10.1/devicon.min.css">
+	</head>
+	<body class="is-preload">
 
-<body class= "container">
-  <div class="first">
-    <h1>Welcome to the Meme Generator</h1>
-    <h3>Please enter an image URL, text for the top and text for the bottom of the meme.</h3>
-    </div>
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="images/portraitphoto.jfif" alt="" /></span>
+					<h1 id="logo"><a href="#">Kenny Suykry</a></h1>
+					<p>Software Engineer from Orange County</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#one" class="active">About</a></li>
+						<li><a href="#two">Skills</a></li>
+						<li><a href="#three">Past Projects</a></li>
+						<li><a href="#four">Education</a></li>
+						<li><a href="#five">Contact</a></li>
+					</ul>
+				</nav>
+			</section>
 
-    <form action="#" id = "memeForm">
-          <div class = "second">
-          <label for="image">Image URL</label>
-          <input type="text" id="MemeImage">
-          </div>
-          <div class = "third">
-            Upper Meme Text: <input type="text" id="upper_text" maxlength="70">
-          </div>
-          <div class = "fourth">
-            Lower Meme Text: <input type="text" id="lower_text" maxlength="70">
-          </div>
-        <div>
-         <input type="submit" value="Create Meme!">
-        </div>
-    </form>
-    <div id="memes-container">
-   </div>
-    <script src = "script.js"></script>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
+				<!-- Main -->
+					<div id="main">
 
-</body>
+						<!-- One -->
+							<section id="one">
+								<div class="image main" data-position="center">
+									<img src="images/banner.jpg" alt="" />
+								</div>
+								<div class="container">
+									<header class="major">
+										<h2>About Me</h2>
+									</header>
+									<p>My name is Kenny Suykry and I am a Software Engineer who recently graduated from the Rithm Bootcamp for Full Stack Software Engineering.
+										I am currently based in Irvine, California.  My hobbies include reading manga, playing tennis or table tennis, DDR(Dance Dance Revolution) and competitive gaming.
+									</p>
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two">
+								<div class="container">
+									<h3>Skills</h3>
+										<li><i class="devicon-javascript-plain colored"></i>Javascript</li>
+										<li><i class="devicon-react-original-wordmark colored"></i>React</li>
+										<li><i class="devicon-typescript-plain colored"></i>Typescript</li>
+										<li><i class="devicon-python-plain-wordmark colored"></i>Python</li>
+										<li><i class="devicon-flask-original colored"></i>Flask</li>
+										<li><i class="devicon-postgresql-plain-wordmark colored"></i>PSQL</li>
+								</div>
+							</section>
+
+						<!-- Three -->
+							<section id="three">
+								<div class="container">
+									<h3>Projects Worked On</h3>
+									<div class="features">
+										<article>
+											<a href="https://github.com/ksuykry/microblogly" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Microblogly</h4>
+												<p>Microblogly is a full stack blog site where you can create posts and upvote/downvote and comment on them.</p>
+											</div>
+										</article>
+										<article>
+											<a href="https://github.com/ksuykry/daily-app" class="image"><img src="images/pic02.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>Daily-To-Do-App</h4>
+												<p>The Daily-To-Do-App is a check list that you can create and remove tasks from.  It also displays your local weather(user must enter their location for the API to update) and changes backgrounds
+													for the morning and afternoon.</p>
+											</div>
+										</article>
+										<article>
+											<a href="https://github.com/ksuykry/warbler" class="image"><img src="images/warblersc.png" alt="" /></a>
+											<div class="inner">
+												<h4>Warbler</h4>
+												<p>A full stack web application that allows users to create, like, unlike and reply to blog posts.  It also allows users to message, follow and unfollow other users.</p>
+											</div>
+										</article>
+									</div>
+								</div>
+							</section>
+													<!-- Three -->
+							<section id="four">
+								<div class="container">
+									<h3>Education</h3>
+									<div class="features">
+										<article>
+											<a href="#" class="image"><img src="images/ucr-logo.jpg" alt="" /></a>
+											<div class="inner">
+												<h4>University Of California, Riverside</h4>
+												<p>Bachelor of Arts in Economics</p>
+											</div>
+										</article>
+									</div>
+								</div>
+							</section>
+							<section id="five">
+								<div class="container">
+									<h3>Contact Information</h3>
+									<div class="features">
+										<article>
+											<div class="inner">
+												<h3>Email</h3>
+												<p>itskennysuykry@gmail.com</p>
+											</div>
+											<div class="inner">
+												<h3>Phone</h3>
+												<p>(562) 618-1655</p>
+											</div>
+											<div class="inner">
+												<h3>Links</h3>
+												<ul class="icons">
+													<li><a href="https://www.linkedin.com/in/kenny-suykry/" class="icon brands fa-linkedin"><span
+																class="label">Linkedin</span></a></li>
+													<li><a href="https://github.com/ksuykry" class="icon brands fa-github"><span class="label">Github</span></a></li>
+												</ul>
+											</div>
+										</article>
+									</div>
+								</div>
+							</section>
+							</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
